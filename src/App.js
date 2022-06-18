@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import {
   Route,
   Routes,
@@ -12,7 +11,7 @@ import Categories from './components/Categories';
 function App() {
   return (
     <>
-      <Header />
+      <Header className="header" />
       <Navbar />
       <Routes>
         <Route
