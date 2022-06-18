@@ -1,33 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 function InputBook(props) {
-  const [title, setTitle] = useState('');
-  const [author, setAuthor] = useState('');
-  const { addBooksProps } = props;
-
-  const onChange = (e) => {
-    setTitle(e.target.value);
-    setAuthor(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (title.trim()) {
-      addBooksProps(title);
-      setTitle('');
-    }
-  };
-
+  const { title, author } = props;
   return (
-    <form onSubmit={handleSubmit} className="form-container">
+    <form className="form-container">
       <input
         type="text"
         className="input-text"
         placeholder="Book title..."
         value={title}
         name="title"
-        onChange={onChange}
       />
       <input
         type="text"
@@ -35,7 +18,6 @@ function InputBook(props) {
         placeholder="Author..."
         value={author}
         name="autor"
-        onChange={onChange}
       />
       <button type="submit" className="input-submit">
         Add Book
@@ -45,11 +27,13 @@ function InputBook(props) {
 }
 
 InputBook.propTypes = {
-  addBooksProps: PropTypes.func,
+  title: PropTypes.string,
+  author: PropTypes.string,
 };
 
 InputBook.defaultProps = {
-  addBooksProps: '',
+  title: '',
+  author: '',
 };
 
 export default InputBook;
