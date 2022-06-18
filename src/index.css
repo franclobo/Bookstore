@@ -1,0 +1,26 @@
+:root {
+  --title: #0290ff;
+  --link: #121212;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--title);
+}
+
+.navBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menuNav {
+  text-decoration: none;
+  list-style-type: none;
+}
+
+.menuNav li {
+  color: var(--link);
+}
