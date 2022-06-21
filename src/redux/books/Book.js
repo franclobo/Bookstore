@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import InputBook from './Form';
+import InputBook from '../../components/Form';
 
 function Book(props) {
   const { title, author } = props;
