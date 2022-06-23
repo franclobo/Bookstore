@@ -3,14 +3,17 @@ import {
   Route,
   Routes,
 } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import Header from './components/Header';
 import Navbar from './components/Navbar';
 import Book from './components/Book';
 import Categories from './components/Categories';
+import generateStore from './redux/configureStore';
 
 function App() {
+  const store = generateStore();
   return (
-    <>
+    <Provider store={store}>
       <Header className="header" />
       <Navbar />
       <Routes>
@@ -23,7 +26,7 @@ function App() {
           element={<Categories />}
         />
       </Routes>
-    </>
+    </Provider>
   );
 }
 
