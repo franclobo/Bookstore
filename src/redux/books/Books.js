@@ -51,7 +51,7 @@ export default function bookReducer(state = initialState, action) {
       return [...state, action.payload];
     case REMOVING_BOOK_SUCCESFUL:
       return [
-        ...state.filter((book) => book.id !== action.payload),
+        ...state.slice(action.payload, state.length - 1),
       ];
     default:
       return state;

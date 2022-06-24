@@ -17,7 +17,7 @@ function Book() {
               <br />
               {item.author}
               <br />
-              <button className="removeBtn" type="button" onClick={() => dispatch(removeBook())}>Remove</button>
+              <button className="removeBtn" type="button" onClick={() => dispatch(removeBook())} key={item.id}>Remove</button>
             </li>
           ))
         }
