@@ -10,7 +10,6 @@ function InputBook() {
     setTitle(e.target.value);
   };
   const onChangeAuthor = (e) => {
-    setTitle(e.target.value);
     setAuthor(e.target.value);
   };
 
