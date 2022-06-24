@@ -3,11 +3,11 @@ import {
 } from 'redux';
 import thunk from 'redux-thunk';
 
-import booksReducer from './books/Books';
+import bookReducer from './books/Books';
 import categoriesReducer from './categories/Categories';
 
 const rootReducer = combineReducers({
-  books: booksReducer,
+  books: bookReducer,
   categories: categoriesReducer,
 });
 

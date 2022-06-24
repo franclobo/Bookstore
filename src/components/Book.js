@@ -1,30 +1,30 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { removeBook } from '../redux/books/Books';
 import InputBook from './Form';
 
-function Book(props) {
-  const { title, author } = props;
+function Book() {
+  const dispatch = useDispatch();
+  const listBooks = useSelector((store) => store.books);
+  console.log(listBooks);
   return (
     <div>
       <ul>
-        <li>
-          {title}
-          {author}
-        </li>
+        {
+          listBooks.map((item) => (
+            <li key={item.id}>
+              {item.title}
+              <br />
+              {item.author}
+              <br />
+              <button className="removeBtn" type="button" onClick={() => dispatch(removeBook())}>Remove</button>
+            </li>
+          ))
+        }
       </ul>
       <InputBook />
     </div>
   );
 }
-
-Book.propTypes = {
-  title: PropTypes.string,
-  author: PropTypes.string,
-};
-
-Book.defaultProps = {
-  title: '',
-  author: '',
-};
 
 export default Book;

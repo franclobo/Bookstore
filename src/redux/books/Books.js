@@ -1,35 +1,58 @@
+import { v4 as uuidv4 } from 'uuid';
+
 // Types
-const ADDING_BOOKS_SUCCESFUL = 'ADDING_BOOKS_SUCCESFUL';
-const REMOVING_BOOKS_SUCCESFUL = 'REMOVING_BOOKS_SUCCESFUL';
+const ADDING_BOOK_SUCCESFUL = 'ADDING_BOOK_SUCCESFUL';
+const REMOVING_BOOK_SUCCESFUL = 'REMOVING_BOOK_SUCCESFUL';
 
 // Initial state
-const initialState = {
-  books: [],
-};
+const initialState = [
+  {
+    id: uuidv4(),
+    title: 'The Lion, the Witch and the Wardrobe',
+    author: 'C. S. Lewis',
+  },
+  {
+    id: uuidv4(),
+    title: 'Prince Caspian',
+    author: 'C. S. Lewis',
+  },
+  {
+    id: uuidv4(),
+    title: 'The Voyage of the Dawn Treader',
+    author: 'C. S. Lewis',
+  },
+];
 
 // Actions
-export const addBooks = () => (dispatch, getState) => {
-  getState();
+export const addBooks = () => (dispatch) => {
+  const title = document.querySelector('.item-title');
+  const author = document.querySelector('.item-author');
+  const newBook = {
+    id: uuidv4(),
+    title: title.value,
+    author: author.value,
+  };
   dispatch({
-    type: ADDING_BOOKS_SUCCESFUL,
-    payload: this.books.push(),
+    type: ADDING_BOOK_SUCCESFUL,
+    payload: newBook,
   });
 };
-export const removeBooks = (index) => (dispatch, getState) => {
-  getState();
+export const removeBook = (id) => (dispatch) => {
   dispatch({
-    type: ADDING_BOOKS_SUCCESFUL,
-    payload: this.books.splice(index, 1),
+    type: REMOVING_BOOK_SUCCESFUL,
+    payload: id,
   });
 };
 
 // Reducers
-export default function booksReducer(state = initialState, action) {
+export default function bookReducer(state = initialState, action) {
   switch (action.type) {
-    case ADDING_BOOKS_SUCCESFUL:
-      return { ...state, books: action.payload };
-    case REMOVING_BOOKS_SUCCESFUL:
-      return { ...state, books: action.payload };
+    case ADDING_BOOK_SUCCESFUL:
+      return [...state, action.payload];
+    case REMOVING_BOOK_SUCCESFUL:
+      return [
+        ...state.filter((book) => book.id !== action.payload),
+      ];
     default:
       return state;
   }
