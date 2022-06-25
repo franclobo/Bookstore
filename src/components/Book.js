@@ -1,30 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import InputBook from './Form';
+import SingleBook from './SingleBook';
 
-function Book(props) {
-  const { title, author } = props;
+function Book() {
   return (
     <div>
-      <ul>
-        <li>
-          {title}
-          {author}
-        </li>
-      </ul>
+      <SingleBook />
       <InputBook />
     </div>
   );
 }
-
-Book.propTypes = {
-  title: PropTypes.string,
-  author: PropTypes.string,
-};
-
-Book.defaultProps = {
-  title: '',
-  author: '',
-};
 
 export default Book;

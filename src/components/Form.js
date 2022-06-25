@@ -1,39 +1,42 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addBooks } from '../redux/books/Books';
 
-function InputBook(props) {
-  const { title, author } = props;
+function InputBook() {
+  const dispatch = useDispatch();
+
+  const [title, setTitle] = useState('');
+  const [author, setAuthor] = useState('');
+  const onChangeTitle = (e) => {
+    setTitle(e.target.value);
+  };
+  const onChangeAuthor = (e) => {
+    setAuthor(e.target.value);
+  };
+
   return (
-    <form className="form-container">
+    <form onSubmit={() => dispatch(addBooks())} className="form-book">
       <input
         type="text"
-        className="input-text"
-        placeholder="Book title..."
+        className="input-title"
+        placeholder="Add title..."
+        required
         value={title}
         name="title"
+        onChange={onChangeTitle}
       />
       <input
         type="text"
-        className="input-text"
-        placeholder="Author..."
+        className="input-author"
+        placeholder="Add author..."
+        required
         value={author}
-        name="autor"
+        name="author"
+        onChange={onChangeAuthor}
       />
-      <button type="submit" className="input-submit">
-        Add Book
-      </button>
+      <button type="submit">Add Book</button>
     </form>
   );
 }
-
-InputBook.propTypes = {
-  title: PropTypes.string,
-  author: PropTypes.string,
-};
-
-InputBook.defaultProps = {
-  title: '',
-  author: '',
-};
 
 export default InputBook;
