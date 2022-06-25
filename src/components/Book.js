@@ -6,7 +6,6 @@ import InputBook from './Form';
 function Book() {
   const dispatch = useDispatch();
   const listBooks = useSelector((store) => store.books);
-  console.log(listBooks);
   return (
     <div>
       <ul>

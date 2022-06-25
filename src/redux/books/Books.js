@@ -24,14 +24,18 @@ const initialState = [
 ];
 
 // Actions
+
 export const addBooks = () => (dispatch) => {
-  const title = document.querySelector('.item-title');
-  const author = document.querySelector('.item-author');
-  const newBook = {
-    id: uuidv4(),
-    title: title.value,
-    author: author.value,
-  };
+  const title = document.querySelector('.input-title');
+  const author = document.querySelector('.input-author');
+  let newBook = {};
+  if (title.value && author.value) {
+    newBook = {
+      id: uuidv4(),
+      title: title.value,
+      author: author.value,
+    };
+  }
   dispatch({
     type: ADDING_BOOK_SUCCESFUL,
     payload: newBook,
@@ -48,10 +52,10 @@ export const removeBook = (id) => (dispatch) => {
 export default function bookReducer(state = initialState, action) {
   switch (action.type) {
     case ADDING_BOOK_SUCCESFUL:
-      return [...state, action.payload];
+      return [...state.push(action.payload)];
     case REMOVING_BOOK_SUCCESFUL:
       return [
-        ...state.slice(action.payload, state.length - 1),
+        ...state.slice(action.payload, -1),
       ];
     default:
       return state;
