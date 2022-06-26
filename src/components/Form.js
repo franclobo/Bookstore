@@ -26,6 +26,7 @@ function InputBook() {
     e.preventDefault();
     dispatch(addBooks({ ...newBook, item_id: uuidv4() }));
     document.querySelector('.form-book').reset();
+    window.location.reload();
   };
 
   return (
