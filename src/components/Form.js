@@ -26,6 +26,7 @@ function InputBook() {
     e.preventDefault();
     dispatch(addBooks({ ...newBook, item_id: uuidv4() }));
     document.querySelector('.form-book').reset();
+    window.location.reload();
   };
 
   return (
@@ -46,13 +47,13 @@ function InputBook() {
         name="author"
         onChange={onChange}
       />
-      <select name="category" className="inputs" required onChange={onChange}>
+      <select name="category" className="categories" required onChange={onChange}>
         <option value="" defaultValue>Category</option>
         <option value="Action">Action</option>
         <option value="Science Fiction">Science Fiction</option>
         <option value="Economy">Economy</option>
       </select>
-      <button type="submit">Add Book</button>
+      <button type="submit" className="addBtn">ADD BOOK</button>
     </form>
   );
 }

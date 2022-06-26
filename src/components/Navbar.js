@@ -16,15 +16,11 @@ function Navbar() {
   ];
   return (
     <nav className="navBar">
-      <ul className="menuNav">
-        {links.map((link) => (
-          <li key={link.id}>
-            <NavLink to={link.path}>
-              {link.text}
-            </NavLink>
-          </li>
-        ))}
-      </ul>
+      {links.map((link) => (
+        <NavLink key={link.id} className="link" to={link.path}>
+          {link.text}
+        </NavLink>
+      ))}
     </nav>
   );
 }

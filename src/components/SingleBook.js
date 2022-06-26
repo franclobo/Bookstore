@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { removeBook } from '../redux/books/Books';
+import ShowProgress from './Progress';
 
 function SingleBook(props) {
   const {
@@ -9,14 +10,27 @@ function SingleBook(props) {
   } = props;
   const dispatch = useDispatch();
 
+  const randIntegerGen = (max) => Math.floor(Math.random() * max);
+  const progress = { completedPercent: randIntegerGen(101), currentChapter: `Chapter ${randIntegerGen(30) + 1}` };
+  const { completedPercent, currentChapter } = progress;
+
   return (
-    <div>
-      <ul>
-        <li className="category">{category}</li>
-        <li className="title">{title}</li>
-        <li className="author">{author}</li>
-      </ul>
-      <button className="removeBtn" type="button" onClick={() => dispatch(removeBook(id))}>Remove</button>
+    <div className="single-book">
+      <div>
+        <ul className="book-data">
+          <li className="book-category">{category}</li>
+          <li className="book-title">{title}</li>
+          <li className="book-author">{author}</li>
+        </ul>
+        <div className="button-book">
+          <button type="button" className="commentBtn">Comments</button>
+          <button className="removeBtn" type="button" onClick={() => dispatch(removeBook(id))}>Remove</button>
+          <button type="button" className="editBtn">Edit</button>
+        </div>
+      </div>
+      <div>
+        <ShowProgress currentChapter={currentChapter} completedPercent={completedPercent} />
+      </div>
     </div>
   );
 }
