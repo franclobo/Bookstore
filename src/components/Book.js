@@ -12,18 +12,23 @@ function Book() {
     dispatch(loadBooks());
   }, []);
   return (
-    <div>
-      {listBooks.map((book) => (
-        <SingleBook
-          key={book.item_id}
-          id={book.item_id}
-          title={book.title}
-          author={book.author}
-          category={book.category}
-        />
-      ))}
-      <InputBook />
-    </div>
+    <>
+      <div className="container">
+        {listBooks.map((book) => (
+          <SingleBook
+            key={book.item_id}
+            id={book.item_id}
+            title={book.title}
+            author={book.author}
+            category={book.category}
+          />
+        ))}
+      </div>
+      <div className="form">
+        <h2 className="form-title">ADD NEW BOOK</h2>
+        <InputBook />
+      </div>
+    </>
   );
 }
 

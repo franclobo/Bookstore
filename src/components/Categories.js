@@ -7,13 +7,15 @@ function Categories() {
   const listCategories = useSelector((store) => store.categories);
   return (
     <>
-      <h2>Categories</h2>
-      <ul>
-        <li>{listCategories}</li>
-      </ul>
-      <button type="button" className="input-submit" onClick={() => dispatch(checkStatus())}>
-        Check Status
-      </button>
+      <div className="category">
+        <h2>Categories</h2>
+        <ul className="list-categories">
+          <li>{listCategories}</li>
+        </ul>
+        <button type="button" className="input-submit" onClick={() => dispatch(checkStatus())}>
+          Check Status
+        </button>
+      </div>
     </>
   );
 }

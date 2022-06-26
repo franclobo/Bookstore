@@ -10,13 +10,17 @@ function SingleBook(props) {
   const dispatch = useDispatch();
 
   return (
-    <div>
-      <ul>
-        <li className="category">{category}</li>
-        <li className="title">{title}</li>
-        <li className="author">{author}</li>
+    <div className="single-book">
+      <ul className="book-data">
+        <li className="book-category">{category}</li>
+        <li className="book-title">{title}</li>
+        <li className="book-author">{author}</li>
       </ul>
-      <button className="removeBtn" type="button" onClick={() => dispatch(removeBook(id))}>Remove</button>
+      <div className="button-book">
+        <button type="button" className="commentBtn">Comments</button>
+        <button className="removeBtn" type="button" onClick={() => dispatch(removeBook(id))}>Remove</button>
+        <button type="button" className="editBtn">Edit</button>
+      </div>
     </div>
   );
 }
