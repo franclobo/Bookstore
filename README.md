@@ -20,6 +20,8 @@ The Bookstore is a website similar to the "Awesome Books" website. I created an 
 ## Live Demo
 
 [Bookstore](https://franclobo.github.io/Bookstore/)<br>
+![image](https://user-images.githubusercontent.com/58642949/176053622-a60e5fc7-14ae-4c1e-9895-af19caaa7802.png)
+
 
 ## Installation
 
